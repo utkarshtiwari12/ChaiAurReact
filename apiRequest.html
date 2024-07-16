@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Intro</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    const body = document.body;
+    body.style.backgroundColor = '#414141';
+    body.style.color = '#FFF';
+
+    const heading = document.createElement('h1');
+    heading.innerText = "Click the Button below to see card.";
+    body.appendChild(heading);
+
+    const btn = document.createElement('button');
+    btn.innerHTML = 'Click me';
+    body.appendChild(btn);
+
+    function divCreation(imgUrl, followersCount){
+        const div = document.createElement('div');
+        div.style.height = '500px';
+        div.style.width = '400px';
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        div.style.justifyContent = 'center'
+        div.style.alignItems = 'center'
+        div.style.padding = '10px';
+        div.style.margin = '10px';
+        div.style.backgroundColor = 'Yellow';
+        body.appendChild(div);
+    
+        const img = document.createElement('img');
+        img.style.height = '200px';
+        img.style.width = '200px';
+        img.style.marginBottom = '20px';
+        img.setAttribute('src', imgUrl)
+        div.appendChild(img);
+    
+        const para = document.createElement('p');
+        para.style.color = '#212121'
+        para.style.fontWeight = 'bold'
+        para.innerText = `No. of followers on GitHub = ${followersCount}`;
+        div.appendChild(para);
+    }
+        
+
+    btn.addEventListener('click', (e) =>{
+
+        const url = "https://api.github.com/users/utkarshtiwari12";
+
+        const values = [];
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+
+        xhr.onreadystatechange = function()
+        {
+            //console.log(xhr.readyState);
+
+            if(xhr.readyState === 4)
+            {
+                const data = JSON.parse(this.responseText);
+
+                divCreation(data.avatar_url, data.followers);
+            }
+        }
+
+        xhr.send();
+    })
+
+
+</script>
+</html>
