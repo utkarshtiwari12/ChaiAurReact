@@ -27,14 +27,24 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/3635539/pexels-photo-3635539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+        backgroundImage: `url('https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=600')`,
       }}
     >
-      <div className="w-full">
-        <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+      <div className="w-full h-screen md:h-[60vh] flex flex-col md:flex-row justify-between items-center">
+        <div className="w-full md:w-1/2 h-1/2 md:h-full flex justify-center items-center">
+          <div
+            className="bg-cover bg-no-repeat w-[80%] h-[80%] rounded-md"
+            style={{
+              backgroundImage: `url('https://images.pexels.com/photos/3635539/pexels-photo-3635539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+            }}
+          ></div>
+        </div>
+
+        <div className="w-full md:w-1/2 h-1/2 md:h-full mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30 flex justify-center items-center">
           <form
             onSubmit={(e) => {
               e.preventDefault();
+              convert();
             }}
           >
             <div className="w-full mb-1">
@@ -42,8 +52,9 @@ function App() {
                 label="From"
                 amount={amount}
                 currencyOptions={options}
-                onCurrencyChange={(currency) => setAmount(amount)}
+                onCurrencyChange={(currency) => setFrom(currency)}
                 selectCurrency={from}
+                onAmountChange={(amount) => setAmount(amount)}
               />
             </div>
             <div className="relative w-full h-0.5">
