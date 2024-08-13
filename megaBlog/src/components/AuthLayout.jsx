@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { set } from "react-hook-form";
 
 export default function Protected({children, authentication = true}) {
 
