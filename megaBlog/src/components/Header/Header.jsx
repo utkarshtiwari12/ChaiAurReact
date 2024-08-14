@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Header() {
 
-    const suthStatus = useSelector((state) => state.auth.status)
+    const authStatus = useSelector((state) => state.auth.status)
     const navigate = useNavigate();
 
     const navItems = [
@@ -56,7 +56,7 @@ function Header() {
                         className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
                         >{item.name}</button>
                     </li>
-                    ) : null;
+                    ) : null
                     )}
                     {authStatus && (  //if authStatus is true then execute inner code
                     <li>
