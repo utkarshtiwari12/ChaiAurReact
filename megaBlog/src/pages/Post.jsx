@@ -11,10 +11,13 @@ export default function Post() {
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
-
-    const isAuthor = post && userData ? post.userId === userData.$id : false;
+            // post && console.log(post.userId)
+    const isAuthor = post && userData ? post.userId === userData.userData.$id : false;
 
     useEffect(() => {
+        // console.log(userData.userData.$id);
+        // console.log(slug);
+        
         if (slug) {
         service.getPost(slug).then((post) => {
             if (post) setPost(post);
